@@ -38,33 +38,75 @@ function App() {
     return (
         <div className="w-full bg-slate-100 min-h-screen">
             {/* Slide Container - Full Viewport Height for Presentation Feel */}
-            <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 md:py-0 py-4">
-                {/* Responsive Container: Fixed height on Desktop, Auto/Min-height on Mobile */}
-                <div className="relative w-full max-w-[1280px] md:h-[720px] min-h-[600px] bg-white md:shadow-2xl shadow-lg md:rounded-xl rounded-none overflow-hidden border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
+            <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 md:py-0 py-0">
+                {/* Responsive Container: Fixed height on Desktop, Dynamic on Mobile */}
+                <div className="relative w-full max-w-[1280px] h-[100dvh] md:h-[720px] bg-white md:shadow-2xl shadow-none md:rounded-xl rounded-none overflow-hidden border-0 md:border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
+
+                    {/* Top Progress Stepper - Optimized for Mobile */}
+                    <div className="absolute top-4 md:top-6 left-0 w-full z-50 flex justify-center px-4">
+                        <div className="bg-white/90 backdrop-blur-md border border-gray-200 p-1 md:p-1.5 rounded-full shadow-lg flex items-center gap-1 md:gap-2">
+                            {['Vizyon', 'Sorun', 'Çözüm', 'Demo'].map((label, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`relative flex items-center justify-center rounded-full transition-all duration-300
+                                        ${currentSlide === index
+                                            ? 'bg-gray-900 text-white shadow-md px-3 md:px-4 py-1.5 md:py-2'
+                                            : 'bg-transparent text-gray-500 hover:bg-gray-100 px-2 md:px-3 py-1.5 md:py-2'}
+                                    `}
+                                >
+                                    <span className={`text-[10px] md:text-xs font-bold ${currentSlide === index ? 'mr-1 md:mr-2' : ''}`}>
+                                        {index + 1}
+                                    </span>
+                                    {/* Text label: Hidden on mobile unless active (and even then, maybe just icon/number is safer if space is tight, but we'll try short text) */}
+                                    <span className={`text-[10px] md:text-sm font-medium whitespace-nowrap overflow-hidden transition-all duration-300
+                                        ${currentSlide === index ? 'max-w-[100px] opacity-100' : 'max-w-0 opacity-0 hidden md:inline-block'}
+                                    `}>
+                                        {label}
+                                    </span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
                     <AnimatePresence mode='wait'>
                         <motion.div
                             key={currentSlide}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.4 }}
-                            className="w-full h-full flex-1"
+                            transition={{ duration: 0.3 }}
+                            className="w-full h-full flex-1 relative overflow-y-auto overflow-x-hidden md:overflow-hidden touch-pan-y"
                         >
                             <CurrentComponent />
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Navigation Controls (Bottom Right of Slide) */}
-                    <div className="absolute bottom-6 right-4 md:right-8 flex gap-3 z-50">
-                        <button onClick={prevSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition shadow-sm">
-                            <ChevronLeft size={20} />
-                        </button>
-                        <div className="flex items-center text-xs font-mono text-gray-400 select-none bg-white/80 backdrop-blur px-2 rounded-lg">
-                            {currentSlide + 1} / {slides.length}
+                    {/* Desktop Side Arrows */}
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-6 top-1/2 -translate-y-1/2 p-3 bg-white/80 backdrop-blur-sm rounded-full text-gray-700 shadow-xl hover:bg-white hover:scale-110 transition-all z-40 hidden md:block"
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-6 top-1/2 -translate-y-1/2 p-3 bg-white/80 backdrop-blur-sm rounded-full text-gray-700 shadow-xl hover:bg-white hover:scale-110 transition-all z-40 hidden md:block"
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+
+                    {/* Mobile Bottom Navigation - Simplified Dots */}
+                    <div className="absolute bottom-4 left-0 w-full flex md:hidden justify-center items-center gap-2 z-50 pointer-events-none">
+                        <div className="flex gap-2 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full pointer-events-auto shadow-sm border border-gray-100">
+                            {slides.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setCurrentSlide(idx)}
+                                    className={`w-2 h-2 rounded-full transition-all ${currentSlide === idx ? 'bg-blue-600 w-4' : 'bg-gray-300'}`}
+                                />
+                            ))}
                         </div>
-                        <button onClick={nextSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition shadow-sm">
-                            <ChevronRight size={20} />
-                        </button>
                     </div>
                 </div>
 
