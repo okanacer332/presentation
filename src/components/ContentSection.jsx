@@ -349,27 +349,59 @@ const ContentSection = () => {
     ];
 
     return (
-        <div className="w-full bg-white py-24 px-4 md:px-8 lg:px-16 border-t border-gray-100">
+        <div className="w-full bg-white py-12 md:py-24 px-4 md:px-8 lg:px-16 border-t border-gray-100">
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-24">
+                <div className="text-center mb-12 md:mb-24">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-block bg-blue-50 text-blue-600 font-bold px-4 py-1.5 rounded-full text-sm mb-4"
+                        className="inline-block bg-blue-50 text-blue-600 font-bold px-4 py-1.5 rounded-full text-xs md:text-sm mb-4"
                     >
                         TEKNİK DETAYLAR
                     </motion.div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
                         Geleceğin Muhasebe Teknolojisi
                     </h2>
-                    <p className="text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
                         Domizan, basit bir otomasyon aracı değil; mali müşavirlik mesleğini geleceğe taşıyan, <strong>güvenli</strong>, <strong>hızlı</strong> ve <strong>akıllı</strong> bir yapay zeka asistanıdır.
                     </p>
                 </div>
 
+                {/* Mobile Navigation (Premium Sticky Header) */}
+                <div className="lg:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 mb-8 -mx-4 px-4 py-3 shadow-sm transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                            <img src="/logo-full.png" alt="Domizan" className="h-6 object-contain" />
+                            <span className="font-bold text-gray-900 text-sm tracking-tight">AI Müşavir</span>
+                        </div>
+                        <button className="bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-gray-800 transition-colors">
+                            Hemen Başla
+                        </button>
+                    </div>
+
+                    {/* Compact Chip Navigation */}
+                    <div className="overflow-x-auto flex gap-2 no-scrollbar pb-1 px-1">
+                        {sections.map((section) => (
+                            <button
+                                key={section.id}
+                                onClick={() => scrollToSection(section.id)}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all text-xs font-bold border ${activeSection === section.id
+                                    ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-200 scale-105'
+                                    : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                                    }`}
+                            >
+                                <span>
+                                    {React.cloneElement(section.icon, { className: "w-3.5 h-3.5" })}
+                                </span>
+                                {section.title}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-                    {/* Sticky Sidebar Navigation */}
+                    {/* Sticky Sidebar Navigation (Desktop) */}
                     <div className="lg:col-span-3 hidden lg:block">
                         <div className="sticky top-12 space-y-2">
                             {sections.map((section) => (
@@ -401,7 +433,7 @@ const ContentSection = () => {
                     </div>
 
                     {/* Content Area */}
-                    <div className="lg:col-span-9 space-y-32">
+                    <div className="lg:col-span-9 space-y-20 md:space-y-32">
                         {sections.map((section, index) => (
                             <motion.div
                                 key={section.id}
@@ -412,17 +444,17 @@ const ContentSection = () => {
                                 transition={{ duration: 0.7 }}
                                 className="scroll-mt-32"
                             >
-                                <div className="flex items-center gap-4 mb-8">
+                                <div className="flex items-center gap-4 mb-6 md:mb-8">
                                     <div className="p-3 bg-gray-100 rounded-2xl text-gray-900">
-                                        {React.cloneElement(section.icon, { className: "w-8 h-8" })}
+                                        {React.cloneElement(section.icon, { className: "w-6 h-6 md:w-8 md:h-8" })}
                                     </div>
-                                    <h3 className="text-3xl font-bold text-gray-900 tracking-tight">{section.title}</h3>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{section.title}</h3>
                                 </div>
 
                                 {section.content}
 
                                 {index !== sections.length - 1 && (
-                                    <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent mt-32"></div>
+                                    <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent mt-20 md:mt-32"></div>
                                 )}
                             </motion.div>
                         ))}
@@ -432,10 +464,10 @@ const ContentSection = () => {
 
 
             {/* Footer */}
-            <div className="mt-32 border-t border-gray-200 py-12 bg-gray-50 flex flex-col items-center justify-center gap-4">
+            <div className="mt-20 md:mt-32 border-t border-gray-200 py-12 bg-gray-50 flex flex-col items-center justify-center gap-4 text-center">
                 <p className="text-gray-500 text-sm font-medium">Domizan, bir <span className="font-bold text-gray-700">ACRTECH</span> ürünüdür.</p>
                 <a href="https://acrtech.com.tr" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="/acrtech.png" alt="ACRTECH Logo" className="h-24 object-contain" />
+                    <img src="/acrtech.png" alt="ACRTECH Logo" className="h-16 md:h-24 object-contain" />
                 </a>
             </div>
         </div>

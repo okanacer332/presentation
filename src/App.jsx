@@ -38,9 +38,9 @@ function App() {
     return (
         <div className="w-full bg-slate-100 min-h-screen">
             {/* Slide Container - Full Viewport Height for Presentation Feel */}
-            <div className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50">
-                {/* 16:9 Aspect Ratio / Card Look Container */}
-                <div className="relative w-full max-w-[1280px] h-[720px] bg-white shadow-2xl rounded-xl overflow-hidden border border-slate-200 z-10 mx-4">
+            <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 md:py-0 py-4">
+                {/* Responsive Container: Fixed height on Desktop, Auto/Min-height on Mobile */}
+                <div className="relative w-full max-w-[1280px] md:h-[720px] min-h-[600px] bg-white md:shadow-2xl shadow-lg md:rounded-xl rounded-none overflow-hidden border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
                     <AnimatePresence mode='wait'>
                         <motion.div
                             key={currentSlide}
@@ -48,21 +48,21 @@ function App() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="w-full h-full"
+                            className="w-full h-full flex-1"
                         >
                             <CurrentComponent />
                         </motion.div>
                     </AnimatePresence>
 
                     {/* Navigation Controls (Bottom Right of Slide) */}
-                    <div className="absolute bottom-6 right-8 flex gap-3 z-50">
-                        <button onClick={prevSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition">
+                    <div className="absolute bottom-6 right-4 md:right-8 flex gap-3 z-50">
+                        <button onClick={prevSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition shadow-sm">
                             <ChevronLeft size={20} />
                         </button>
-                        <div className="flex items-center text-xs font-mono text-gray-400 select-none">
+                        <div className="flex items-center text-xs font-mono text-gray-400 select-none bg-white/80 backdrop-blur px-2 rounded-lg">
                             {currentSlide + 1} / {slides.length}
                         </div>
-                        <button onClick={nextSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition">
+                        <button onClick={nextSlide} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-gray-600 transition shadow-sm">
                             <ChevronRight size={20} />
                         </button>
                     </div>
