@@ -99,7 +99,7 @@ function App() {
             </div>
 
             {/* 3. DETAILED CONTENT */}
-            <div id="details" className="relative z-20 bg-white">
+            <div id="details" className="relative z-20 bg-white scroll-mt-20 md:scroll-mt-24">
                 <ContentSection />
             </div>
         </div>

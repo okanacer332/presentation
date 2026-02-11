@@ -21,6 +21,26 @@ const ContentSection = () => {
         }, 3000);
     };
 
+    // Scroll active tab into view
+    useEffect(() => {
+        const container = document.getElementById('mobile-nav-container');
+        const activeBtn = document.getElementById(`nav-btn-${activeSection}`);
+
+        if (container && activeBtn) {
+            const containerWidth = container.offsetWidth;
+            const btnLeft = activeBtn.offsetLeft;
+            const btnWidth = activeBtn.offsetWidth;
+
+            // Calculate center position
+            const scrollLeft = btnLeft - (containerWidth / 2) + (btnWidth / 2);
+
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+        }
+    }, [activeSection]);
+
     // Scroll spy logic
     useEffect(() => {
         const handleScroll = () => {
@@ -29,6 +49,7 @@ const ContentSection = () => {
                 const element = document.getElementById(section);
                 if (element) {
                     const rect = element.getBoundingClientRect();
+                    // Offset check because of sticky headers (approx 150px offset)
                     if (rect.top >= 0 && rect.top <= 300) {
                         setActiveSection(section);
                         break;
@@ -380,25 +401,20 @@ const ContentSection = () => {
                     </p>
                 </div>
 
-                {/* Mobile Navigation (Premium Sticky Header) */}
-                <div className="lg:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 mb-8 -mx-4 px-4 py-3 shadow-sm transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
-                            <img src="/domizan-new/domizan.png" alt="Domizan" className="h-6 object-contain" />
-                            <span className="font-bold text-gray-900 text-sm tracking-tight">AI Müşavir</span>
-                        </div>
-                        <button className="bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-gray-800 transition-colors">
-                            Hemen Başla
-                        </button>
-                    </div>
+                {/* Mobile Navigation (Sticky Tabs Only) */}
+                <div className="lg:hidden sticky top-16 md:top-20 z-40 bg-white/95 backdrop-blur-xl border-b border-gray-100 mb-8 -mx-4 px-4 py-3 shadow-sm transition-all duration-300">
 
-                    {/* Compact Chip Navigation */}
-                    <div className="overflow-x-auto flex gap-2 no-scrollbar pb-1 px-1">
+                    {/* Compact Chip Navigation - Centered Active Item */}
+                    <div
+                        id="mobile-nav-container"
+                        className="overflow-x-auto flex gap-2 no-scrollbar pb-1 px-1 scroll-smooth"
+                    >
                         {sections.map((section) => (
                             <button
                                 key={section.id}
+                                id={`nav-btn-${section.id}`}
                                 onClick={() => scrollToSection(section.id)}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all text-xs font-bold border ${activeSection === section.id
+                                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all text-xs font-bold border ${activeSection === section.id
                                     ? 'bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-200 scale-105'
                                     : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
                                     }`}
@@ -415,7 +431,7 @@ const ContentSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     {/* Sticky Sidebar Navigation (Desktop) */}
                     <div className="lg:col-span-3 hidden lg:block">
-                        <div className="sticky top-12 space-y-2">
+                        <div className="sticky top-32 space-y-2">
                             {sections.map((section) => (
                                 <button
                                     key={section.id}
