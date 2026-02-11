@@ -176,7 +176,7 @@ const ContentSection = () => {
                             </p>
                         </div>
                         <div className="w-full md:w-1/3 flex justify-center">
-                            <img src="/logo-full.png" alt="AI Brain" className="w-48 opacity-90 drop-shadow-2xl animate-pulse" />
+                            <img src="/domizan-new/domizan.png" alt="AI Brain" className="w-48 opacity-90 drop-shadow-2xl animate-pulse" />
                         </div>
                     </div>
 
@@ -372,7 +372,7 @@ const ContentSection = () => {
                 <div className="lg:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 mb-8 -mx-4 px-4 py-3 shadow-sm transition-all duration-300">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
-                            <img src="/logo-full.png" alt="Domizan" className="h-6 object-contain" />
+                            <img src="/domizan-new/domizan.png" alt="Domizan" className="h-6 object-contain" />
                             <span className="font-bold text-gray-900 text-sm tracking-tight">AI Müşavir</span>
                         </div>
                         <button className="bg-black text-white text-[10px] font-bold px-3 py-1.5 rounded-full hover:bg-gray-800 transition-colors">
@@ -467,7 +467,7 @@ const ContentSection = () => {
             <div className="mt-20 md:mt-32 border-t border-gray-200 py-12 bg-gray-50 flex flex-col items-center justify-center gap-4 text-center">
                 <p className="text-gray-500 text-sm font-medium">Domizan, bir <span className="font-bold text-gray-700">ACRTECH</span> ürünüdür.</p>
                 <a href="https://acrtech.com.tr" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="/acrtech.png" alt="ACRTECH Logo" className="h-16 md:h-24 object-contain" />
+                    <img src="/domizan-new/acrtech.png" alt="ACRTECH Logo" className="h-16 md:h-24 object-contain" />
                 </a>
             </div>
         </div>

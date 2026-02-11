@@ -15,7 +15,7 @@ const HeroSlide = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <img src="/logo-full.png" alt="Domizan Logo" className="h-12 md:h-16 mb-6 object-contain" />
+                        <img src="/domizan-new/domizan.png" alt="Domizan Logo" className="h-12 md:h-16 mb-6 object-contain" />
                         <h2 className="text-2xl md:text-3xl font-medium text-[#86868b] tracking-tight mb-6 md:mb-8">
                             İletişim, yeniden tasarlandı.
                         </h2>
