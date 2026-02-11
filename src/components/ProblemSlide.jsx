@@ -61,10 +61,10 @@ const ProblemSlide = () => {
                     className="bg-gray-50 border-2 border-dashed border-gray-300 p-6 md:p-8 rounded-3xl flex flex-col justify-center relative group hover:bg-gray-100 transition-colors"
                 >
                     <div className="absolute top-4 right-4 text-[10px] md:text-xs font-bold text-gray-400 bg-gray-200 px-2 py-1 rounded">ESKİ DÜNYA</div>
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-600 mb-2">Klasik Yazılımlar</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-600 mb-2">Geleneksel Yazılımlar</h3>
                     <p className="text-gray-500 text-xs md:text-sm mb-6 font-medium">
-                        Luca, Zirve, Mikro... Hepsinin ortak sorunu:
-                        <span className="text-red-500 font-bold block mt-1">Siz Veri Girmezseniz, Onlar ÇÖPTÜR.</span>
+                        Mevcut masaüstü programları. Hepsinin ortak sorunu:
+                        <span className="text-red-500 font-bold block mt-1">Veri Girişine Bağımlıdır.</span>
                     </p>
 
                     <div className="flex flex-col gap-3">

@@ -103,8 +103,14 @@ const HeroSlide = () => {
                         transition={{ delay: 1 }}
                         className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-xl border border-white/50 flex items-center gap-4 hidden md:flex"
                     >
-                        <div className="text-right">
-                            <div className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Yatırım Geri Dönüşü</div>
+                        <div className="text-right group/info relative">
+                            <div className="flex items-center gap-1 justify-end cursor-help">
+                                <div className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Yatırım Geri Dönüşü</div>
+                                <div className="w-3 h-3 rounded-full border border-gray-400 text-gray-500 flex items-center justify-center text-[8px] font-serif italic">i</div>
+                            </div>
+                            <div className="absolute bottom-full right-0 mb-2 w-48 p-2 bg-gray-800 text-white text-[10px] rounded-lg opacity-0 group-hover/info:opacity-100 transition-opacity pointer-events-none">
+                                * Manuel işlem maliyeti (50 saat) ile Otopilot maliyeti (2 dk) arasındaki verimlilik farkı baz alınmıştır.
+                            </div>
                             <div className="text-2xl font-black text-[#1D1D1F]">1500x</div>
                         </div>
                     </motion.div>

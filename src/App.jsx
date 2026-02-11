@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft, ArrowDown } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowDown, Eye, Shield, CheckCircle2, MessageCircle } from 'lucide-react';
 import HeroSlide from './components/HeroSlide';
 import ProblemSlide from './components/ProblemSlide';
 import SolutionSlide from './components/SolutionSlide';
@@ -43,27 +43,37 @@ function App() {
                 <div className="relative w-full max-w-[1280px] min-h-[100dvh] md:min-h-0 md:h-[720px] bg-white md:shadow-2xl shadow-none md:rounded-xl rounded-none md:overflow-hidden border-0 md:border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
 
                     {/* Top Progress Stepper - Optimized for Mobile */}
-                    <div className="absolute top-4 md:top-6 left-0 w-full z-50 flex justify-center px-4">
-                        <div className="bg-white/90 backdrop-blur-md border border-gray-200 p-1 md:p-1.5 rounded-full shadow-lg flex items-center gap-1 md:gap-2">
-                            {['Vizyon', 'Sorun', 'Çözüm', 'Demo'].map((label, index) => (
+                    {/* Top Progress Stepper - Premium Card Design */}
+                    <div className="absolute top-4 md:top-8 z-50 w-full flex justify-center px-4 pointer-events-none">
+                        <div className="bg-white/80 backdrop-blur-xl border border-white/50 p-1.5 rounded-2xl shadow-2xl flex items-center gap-1 md:gap-2 pointer-events-auto ring-1 ring-black/5">
+                            {[
+                                { id: 0, label: 'Vizyon', icon: <Eye size={14} className="md:w-4 md:h-4" /> },
+                                { id: 1, label: 'Sorun', icon: <Shield size={14} className="md:w-4 md:h-4" /> },
+                                { id: 2, label: 'Çözüm', icon: <CheckCircle2 size={14} className="md:w-4 md:h-4" /> },
+                                { id: 3, label: 'Demo', icon: <MessageCircle size={14} className="md:w-4 md:h-4" /> },
+                            ].map((item, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
-                                    className={`relative flex items-center justify-center rounded-full transition-all duration-300
+                                    className={`relative flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-xl transition-all duration-300
                                         ${currentSlide === index
-                                            ? 'bg-gray-900 text-white shadow-md px-3 md:px-4 py-1.5 md:py-2'
-                                            : 'bg-transparent text-gray-500 hover:bg-gray-100 px-2 md:px-3 py-1.5 md:py-2'}
+                                            ? 'bg-white shadow-md text-blue-600 scale-100 ring-1 ring-black/5 font-bold'
+                                            : 'hover:bg-white/50 text-gray-500 hover:text-gray-900 scale-95 font-medium'}
                                     `}
                                 >
-                                    <span className={`text-[10px] md:text-xs font-bold ${currentSlide === index ? 'mr-1 md:mr-2' : ''}`}>
-                                        {index + 1}
+                                    <span className={`opacity-80 ${currentSlide === index ? 'text-blue-600' : ''}`}>
+                                        {item.icon}
                                     </span>
-                                    {/* Text label: Hidden on mobile unless active (and even then, maybe just icon/number is safer if space is tight, but we'll try short text) */}
-                                    <span className={`text-[10px] md:text-sm font-medium whitespace-nowrap overflow-hidden transition-all duration-300
-                                        ${currentSlide === index ? 'max-w-[100px] opacity-100' : 'max-w-0 opacity-0 hidden md:inline-block'}
-                                    `}>
-                                        {label}
+                                    <span className="text-[10px] md:text-xs tracking-tight">
+                                        {item.label}
                                     </span>
+                                    {/* Active Indicator Dot */}
+                                    {currentSlide === index && (
+                                        <motion.div
+                                            layoutId="active-stepper"
+                                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"
+                                        />
+                                    )}
                                 </button>
                             ))}
                         </div>
