@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Server, Shield, Cpu, Workflow, MessageCircle,
     Database, Lock, Layers, Zap, GitBranch,
@@ -8,6 +8,18 @@ import {
 
 const ContentSection = () => {
     const [activeSection, setActiveSection] = useState('architecture');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formStatus, setFormStatus] = useState('idle'); // idle, success
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        setFormStatus('success');
+        // Auto close after 3 seconds
+        setTimeout(() => {
+            setIsModalOpen(false);
+            setFormStatus('idle'); // Reset for next time
+        }, 3000);
+    };
 
     // Scroll spy logic
     useEffect(() => {
@@ -424,7 +436,10 @@ const ContentSection = () => {
                                 <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl">
                                     <h4 className="font-bold mb-2">Erken Erişim</h4>
                                     <p className="text-blue-100 text-xs mb-4">Domizan'ı ilk deneyimleyen ofislerden biri olun.</p>
-                                    <button className="w-full py-2 bg-white text-blue-600 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors">
+                                    <button
+                                        onClick={() => setIsModalOpen(true)}
+                                        className="w-full py-2 bg-white text-blue-600 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors"
+                                    >
                                         Başvuru Yap
                                     </button>
                                 </div>
@@ -471,6 +486,108 @@ const ContentSection = () => {
                 </a>
                 <span className="text-gray-500 text-sm font-medium">ürünüdür.</span>
             </div>
+
+            {/* Application Modal */}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            onClick={() => setIsModalOpen(false)}
+                        />
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            className="relative bg-white rounded-3xl w-full max-w-md p-8 shadow-2xl overflow-hidden"
+                        >
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+
+                            {formStatus === 'idle' && (
+                                <div className="space-y-6">
+                                    <div className="text-center">
+                                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
+                                            <Zap size={24} />
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-gray-900">Erken Erişim Başvurusu</h3>
+                                        <p className="text-gray-500 text-sm mt-2">Domizan'ı ilk deneyimleyen ofislerden biri olmak için bilgilerinizi bırakın.</p>
+                                    </div>
+
+                                    <form onSubmit={handleFormSubmit} className="space-y-4">
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1.5">Ad Soyad</label>
+                                            <input
+                                                required
+                                                type="text"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-medium"
+                                                placeholder="Örn: Ahmet Yılmaz"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1.5">E-Posta</label>
+                                            <input
+                                                required
+                                                type="email"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-medium"
+                                                placeholder="ornek@ofis.com"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1.5">Telefon</label>
+                                            <input
+                                                required
+                                                type="tel"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all font-medium"
+                                                placeholder="05XX XXX XX XX"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="w-full bg-[#1D1D1F] text-white font-bold py-4 rounded-xl hover:bg-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg text-lg mt-2"
+                                        >
+                                            Başvuru Gönder
+                                        </button>
+                                    </form>
+                                </div>
+                            )}
+
+                            {formStatus === 'success' && (
+                                <div className="flex flex-col items-center justify-center py-8 text-center space-y-4">
+                                    <motion.div
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        type="spring"
+                                        className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-2"
+                                    >
+                                        <CheckCircle2 size={40} />
+                                    </motion.div>
+                                    <h3 className="text-2xl font-bold text-gray-900">Başvurunuz Alındı!</h3>
+                                    <p className="text-gray-500 max-w-xs">
+                                        İlginiz için teşekkürler. Ekibimiz en kısa sürede sizinle iletişime geçecektir.
+                                    </p>
+                                    <div className="w-full bg-gray-100 rounded-full h-1 mt-6 overflow-hidden">
+                                        <motion.div
+                                            initial={{ width: "100%" }}
+                                            animate={{ width: "0%" }}
+                                            transition={{ duration: 3, ease: "linear" }}
+                                            className="h-full bg-green-500"
+                                        />
+                                    </div>
+                                    <p className="text-xs text-gray-400 mt-2">Pencere otomatik kapanıyor...</p>
+                                </div>
+                            )}
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

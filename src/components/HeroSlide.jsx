@@ -1,15 +1,23 @@
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Clock, Zap } from 'lucide-react';
 
 const HeroSlide = () => {
     return (
-        <div className="slide-content w-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-6 md:p-12">
+        <div className="slide-content w-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-6 md:p-16">
 
-            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center py-8 md:py-0">
+            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
 
-                {/* Left Column: The Narrative & Value Prop */}
-                <div className="flex flex-col items-start text-left z-10">
+                {/* Left Content: Value Prop */}
+                <div className="space-y-6 md:space-y-8 text-center md:text-left pt-12 md:pt-0">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="inline-block px-4 py-1.5 rounded-full bg-blue-100/50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wide uppercase"
+                    >
+                        Yapay Zeka Destekli Muhasebe
+                    </motion.div>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -140,7 +148,7 @@ const TimeReducer = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-end w-40 md:w-64">
+        <div className="flex flex-col items-end w-44 md:w-72">
             <div className="relative h-8 md:h-10 w-full flex items-center justify-end overflow-hidden">
                 <AnimatePresence mode="wait">
                     {state === 'start' && (
