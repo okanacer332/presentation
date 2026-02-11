@@ -28,9 +28,9 @@ const TelegramDemoSlide = () => {
     }, []);
 
     return (
-        <div className="slide-content h-full flex items-center justify-center bg-white text-[#1D1D1F] overflow-hidden p-8">
+        <div className="slide-content h-full flex md:items-center items-start justify-center bg-white text-[#1D1D1F] overflow-y-auto md:overflow-hidden p-4 md:p-8 pt-24 pb-24 md:pt-8 md:pb-8">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full max-w-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full max-w-6xl">
 
                 {/* Text Content */}
                 <div className="order-2 md:order-1 text-left">
@@ -39,20 +39,20 @@ const TelegramDemoSlide = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-5xl font-bold mb-6 tracking-tight leading-tight">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-center md:text-left">
                             Ofisiniz Cebinizde.<br />
                             <span className="text-blue-600">7/24 Canlı Asistan.</span>
                         </h2>
-                        <ul className="space-y-6 text-lg text-gray-600">
-                            <li className="flex items-start gap-4">
-                                <div className="bg-green-100 p-2 rounded-lg text-green-700 mt-1"><BellRing size={20} /></div>
+                        <ul className="space-y-4 md:space-y-6 text-sm md:text-lg text-gray-600">
+                            <li className="flex items-start gap-3 md:gap-4 bg-gray-50 p-3 rounded-xl md:bg-transparent md:p-0">
+                                <div className="bg-green-100 p-2 rounded-lg text-green-700 mt-1 shrink-0"><BellRing size={20} /></div>
                                 <div>
                                     <strong className="text-gray-900 block">Resmi Gazete Takibi</strong>
                                     Sizi ilgilendiren bir tebliğ çıktığında anında özet bildirim.
                                 </div>
                             </li>
-                            <li className="flex items-start gap-4">
-                                <div className="bg-blue-100 p-2 rounded-lg text-blue-700 mt-1"><Bot size={20} /></div>
+                            <li className="flex items-start gap-3 md:gap-4 bg-gray-50 p-3 rounded-xl md:bg-transparent md:p-0">
+                                <div className="bg-blue-100 p-2 rounded-lg text-blue-700 mt-1 shrink-0"><Bot size={20} /></div>
                                 <div>
                                     <strong className="text-gray-900 block">Soru - Cevap</strong>
                                     "Ahmet Bey'in KDV'si ne kadar?" diye sorun, saniyesinde cevap alın.
@@ -63,12 +63,12 @@ const TelegramDemoSlide = () => {
                 </div>
 
                 {/* Phone Simulator */}
-                <div className="order-1 md:order-2 flex justify-center perspective-1000">
+                <div className="order-1 md:order-2 flex justify-center perspective-1000 mb-8 md:mb-0">
                     <motion.div
                         initial={{ rotateY: -15, scale: 0.9, opacity: 0 }}
                         animate={{ rotateY: -5, scale: 1, opacity: 1 }}
                         transition={{ duration: 1 }}
-                        className="w-[380px] h-[750px] bg-gray-900 rounded-[50px] border-[14px] border-gray-900 shadow-2xl overflow-hidden relative"
+                        className="w-[280px] h-[550px] md:w-[380px] md:h-[750px] bg-gray-900 rounded-[40px] md:rounded-[50px] border-[10px] md:border-[14px] border-gray-900 shadow-2xl overflow-hidden relative"
                     >
                         {/* Status Bar */}
                         <div className="absolute top-0 w-full h-8 bg-black z-20 flex justify-between px-6 items-center text-white text-[10px] font-bold">
@@ -110,8 +110,8 @@ const TelegramDemoSlide = () => {
                                         ) : (
                                             <div
                                                 className={`max-w-[85%] p-3 rounded-2xl text-sm relative shadow-sm ${msg.type === 'user'
-                                                        ? 'bg-[#2b5278] text-white rounded-tr-none'
-                                                        : 'bg-[#182533] text-white rounded-tl-none'
+                                                    ? 'bg-[#2b5278] text-white rounded-tr-none'
+                                                    : 'bg-[#182533] text-white rounded-tl-none'
                                                     }`}
                                             >
                                                 {/* Markdown-ish formatting for bold */}

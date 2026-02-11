@@ -4,10 +4,10 @@ import { Download, Smartphone, Monitor, Globe, Server, MessageCircle, Laptop, Ha
 
 const ProblemSlide = () => {
     return (
-        <div className="slide-content h-full flex flex-col justify-center bg-white text-[#1D1D1F] p-4 md:p-8 relative overflow-y-auto md:overflow-hidden">
+        <div className="slide-content h-full flex flex-col md:justify-center justify-start bg-white text-[#1D1D1F] p-4 md:p-8 relative overflow-y-auto md:overflow-hidden pt-20 pb-20 md:pt-8 md:pb-8">
 
             {/* Header: Universal Access */}
-            <div className="text-center mb-6 md:mb-10 z-10 pt-8 md:pt-0">
+            <div className="text-center mb-6 md:mb-10 z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
