@@ -5,7 +5,7 @@ import { ArrowRight, Clock, Zap } from 'lucide-react';
 
 const HeroSlide = () => {
     return (
-        <div className="slide-content w-full h-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-4 md:p-16">
+        <div className="slide-content w-full h-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-4 md:p-16 pt-[env(safe-area-inset-top,20px)] md:pt-16">
 
             <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center h-full md:h-auto content-center">
 

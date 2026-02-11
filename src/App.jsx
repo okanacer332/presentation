@@ -6,6 +6,7 @@ import ProblemSlide from './components/ProblemSlide';
 import SolutionSlide from './components/SolutionSlide';
 import TelegramDemoSlide from './components/TelegramDemoSlide';
 import ContentSection from './components/ContentSection';
+import FitToViewport from './components/FitToViewport';
 
 function App() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -87,7 +88,9 @@ function App() {
                             transition={{ duration: 0.3 }}
                             className="w-full h-full flex-1 relative overflow-hidden touch-pan-y"
                         >
-                            <CurrentComponent />
+                            <FitToViewport>
+                                <CurrentComponent />
+                            </FitToViewport>
                         </motion.div>
                     </AnimatePresence>
 
