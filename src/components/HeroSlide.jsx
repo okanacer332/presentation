@@ -5,12 +5,12 @@ import { ArrowRight, Clock, Zap } from 'lucide-react';
 
 const HeroSlide = () => {
     return (
-        <div className="slide-content w-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-6 md:p-16">
+        <div className="slide-content w-full h-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-4 md:p-16">
 
-            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 items-center h-full md:h-auto content-center">
 
                 {/* Left Content: Value Prop */}
-                <div className="space-y-6 md:space-y-8 text-center md:text-left pt-12 md:pt-0">
+                <div className="space-y-4 md:space-y-8 text-center md:text-left pt-12 md:pt-0">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

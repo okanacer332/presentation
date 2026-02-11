@@ -68,7 +68,7 @@ const TelegramDemoSlide = () => {
                         initial={{ rotateY: -15, scale: 0.9, opacity: 0 }}
                         animate={{ rotateY: -5, scale: 1, opacity: 1 }}
                         transition={{ duration: 1 }}
-                        className="w-[220px] h-[460px] md:w-[320px] md:h-[640px] bg-gray-900 rounded-[30px] md:rounded-[45px] border-[8px] md:border-[12px] border-gray-900 shadow-2xl overflow-hidden relative mx-auto"
+                        className="w-[180px] h-[360px] md:w-[320px] md:h-[640px] bg-gray-900 rounded-[24px] md:rounded-[45px] border-[6px] md:border-[12px] border-gray-900 shadow-2xl overflow-hidden relative mx-auto"
                     >
                         {/* Status Bar */}
                         <div className="absolute top-0 w-full h-8 bg-black z-20 flex justify-between px-6 items-center text-white text-[10px] font-bold">

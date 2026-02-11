@@ -39,25 +39,25 @@ const SolutionSlide = () => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     return (
-        <div className="slide-content h-full flex flex-col justify-center items-center bg-white text-[#1D1D1F] relative overflow-hidden p-4">
+        <div className="slide-content h-full flex flex-col justify-center items-center bg-white text-[#1D1D1F] relative overflow-hidden p-2 md:p-4">
 
             {/* Header */}
-            <div className="text-center mb-8 md:mb-16 z-20 pt-8 md:pt-0">
+            <div className="text-center mb-4 md:mb-16 z-20 pt-12 md:pt-0">
                 <motion.h2
-                    className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+                    className="text-2xl md:text-5xl font-bold mb-2 tracking-tight"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                 >
                     Tek Hareket. <span className="text-blue-600">Sonsuz Zeka.</span>
                 </motion.h2>
-                <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto px-4">
+                <p className="text-gray-500 text-xs md:text-lg max-w-2xl mx-auto px-4 leading-tight">
                     Aynı anda. Farklı cihazlardan. Farklı formatlarda. <br className="hidden md:block" />
                     <strong className="text-gray-900">Domizan belgeleri anlar, ilişkilendirir ve doğru mükellefe işler.</strong>
                 </p>
             </div>
 
             {/* The Simulation Stage */}
-            <div className="relative w-full max-w-5xl h-[400px] md:h-[450px] flex flex-col md:flex-row justify-center items-center">
+            <div className="relative w-full max-w-5xl h-[300px] md:h-[450px] flex flex-col md:flex-row justify-center items-center">
 
                 {/* 1. INPUT SOURCES (Visible at Step 0-2) */}
                 <div className="absolute top-0 w-full flex justify-between px-4 md:px-20 z-10">
