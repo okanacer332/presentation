@@ -4,7 +4,7 @@ import { Download, Smartphone, Monitor, Globe, Server, MessageCircle, Laptop, Ha
 
 const ProblemSlide = () => {
     return (
-        <div className="slide-content h-full flex flex-col md:justify-center justify-start bg-white text-[#1D1D1F] p-4 md:p-8 relative overflow-y-auto md:overflow-hidden pt-20 pb-20 md:pt-8 md:pb-8">
+        <div className="slide-content h-full flex flex-col md:justify-center justify-start bg-white text-[#1D1D1F] p-4 md:p-8 relative md:overflow-hidden pt-20 pb-20 md:pt-8 md:pb-8">
 
             {/* Header: Universal Access */}
             <div className="text-center mb-6 md:mb-10 z-10">

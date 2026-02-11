@@ -28,7 +28,7 @@ const TelegramDemoSlide = () => {
     }, []);
 
     return (
-        <div className="slide-content h-full flex md:items-center items-start justify-center bg-white text-[#1D1D1F] overflow-y-auto md:overflow-hidden p-4 md:p-8 pt-24 pb-24 md:pt-8 md:pb-8">
+        <div className="slide-content h-full flex md:items-center items-start justify-center bg-white text-[#1D1D1F] md:overflow-hidden p-4 md:p-8 pt-24 pb-24 md:pt-8 md:pb-8">
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full max-w-6xl">
 

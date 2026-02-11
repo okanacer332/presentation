@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Clock, Zap } from 'lucide-react';
 
 const HeroSlide = () => {
     return (
-        <div className="slide-content h-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-6 md:p-12 overflow-y-auto md:overflow-hidden">
+        <div className="slide-content w-full flex items-center justify-center bg-[#F5F5F7] text-[#1D1D1F] p-6 md:p-12">
 
             <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center py-8 md:py-0">
 
@@ -32,36 +32,39 @@ const HeroSlide = () => {
 
                         <div className="space-y-6">
                             {/* Old Way */}
-                            <div className="flex items-center justify-between opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <div className="flex items-center justify-between opacity-50 grayscale group-hover:grayscale-0 transition-all duration-500">
                                 <div className="flex items-center gap-3">
-                                    <Clock size={20} className="md:w-6 md:h-6" />
-                                    <span className="text-base md:text-lg font-medium">Manuel Operasyon</span>
+                                    <div className="bg-gray-100 p-2 rounded-lg text-gray-500">
+                                        <Clock size={16} className="md:w-5 md:h-5" />
+                                    </div>
+                                    <span className="text-sm md:text-lg font-bold text-gray-500">Manuel Operasyon</span>
                                 </div>
-                                <span className="text-lg md:text-xl font-bold decoration-red-500 line-through decoration-2">50 Saat</span>
+                                <span className="text-xl md:text-2xl font-bold text-gray-400 line-through decoration-red-500 decoration-2">
+                                    50 Saat
+                                </span>
                             </div>
 
                             {/* Divider with Arrow */}
                             <div className="flex items-center gap-4">
-                                <div className="h-px bg-gray-200 flex-1"></div>
-                                <div className="bg-blue-50 text-blue-600 rounded-full p-1">
-                                    <ArrowRight size={14} className="md:w-4 md:h-4" />
+                                <div className="h-px bg-gray-100 flex-1"></div>
+                                <div className="bg-blue-50 text-blue-600 rounded-full p-1.5 animate-pulse">
+                                    <ArrowRight size={14} className="md:w-5 md:h-5" />
                                 </div>
-                                <div className="h-px bg-gray-200 flex-1"></div>
+                                <div className="h-px bg-gray-100 flex-1"></div>
                             </div>
 
                             {/* New Way */}
-                            <div className="flex items-center justify-between text-[#1D1D1F]">
+                            <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-blue-600 p-2 rounded-lg text-white shadow-lg shadow-blue-200">
-                                        <Zap size={18} fill="currentColor" className="md:w-5 md:h-5" />
+                                        <Zap size={16} fill="currentColor" className="md:w-5 md:h-5" />
                                     </div>
-                                    <span className="text-lg md:text-xl font-bold">Domizan Otopilot</span>
+                                    <span className="text-sm md:text-lg font-bold text-gray-900">Domizan Otopilot</span>
                                 </div>
-                                <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">
-                                    2 Dakika
-                                </span>
+                                <TimeReducer />
                             </div>
                         </div>
+
                     </motion.div>
 
                     <motion.p
@@ -107,6 +110,77 @@ const HeroSlide = () => {
                     </motion.div>
                 </motion.div>
 
+            </div >
+        </div >
+    );
+};
+
+// Animated Time Reducer Component
+const TimeReducer = () => {
+    const [state, setState] = React.useState('start'); // start, shrinking, done
+
+    React.useEffect(() => {
+        const sequence = async () => {
+            while (true) {
+                setState('start');
+                await new Promise(r => setTimeout(r, 2000)); // Hold 10 Hours
+                setState('shrinking');
+                await new Promise(r => setTimeout(r, 1000)); // Fast shrink animation
+                setState('done');
+                await new Promise(r => setTimeout(r, 4000)); // Hold 60 Seconds
+            }
+        };
+        sequence();
+    }, []);
+
+    return (
+        <div className="flex flex-col items-end w-40 md:w-64">
+            <div className="relative h-8 md:h-10 w-full flex items-center justify-end overflow-hidden">
+                <AnimatePresence mode="wait">
+                    {state === 'start' && (
+                        <motion.span
+                            key="hours"
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -20, opacity: 0 }}
+                            className="text-xl md:text-2xl font-bold text-gray-400 line-through decoration-red-400 decoration-2 whitespace-nowrap"
+                        >
+                            10 Saat
+                        </motion.span>
+                    )}
+                    {state === 'shrinking' && (
+                        <motion.div
+                            key="shrinking"
+                            initial={{ scale: 1.5, filter: "blur(0px)" }}
+                            animate={{ scale: 0.5, filter: "blur(4px)" }}
+                            className="text-2xl md:text-3xl font-black text-blue-400"
+                        >
+                            ⚡⚡⚡
+                        </motion.div>
+                    )}
+                    {state === 'done' && (
+                        <motion.span
+                            key="seconds"
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1.1, opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 200 }}
+                            className="text-xl md:text-3xl font-black tracking-tight text-blue-600 whitespace-nowrap"
+                        >
+                            60 Saniye
+                        </motion.span>
+                    )}
+                </AnimatePresence>
+            </div>
+            {/* Visual Progress Bar to reinforce the "shrinking" concept */}
+            <div className="w-full h-1 md:h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
+                <motion.div
+                    className="h-full bg-gradient-to-r from-red-500 to-blue-600"
+                    animate={{
+                        width: state === 'start' ? "100%" : state === 'shrinking' ? "10%" : "0.5%",
+                        backgroundColor: state === 'done' ? "#2563eb" : "#ef4444",
+                    }}
+                    transition={{ duration: state === 'shrinking' ? 1 : 0.5 }}
+                />
             </div>
         </div>
     );

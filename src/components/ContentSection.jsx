@@ -464,11 +464,12 @@ const ContentSection = () => {
 
 
             {/* Footer */}
-            <div className="mt-20 md:mt-32 border-t border-gray-200 py-12 bg-gray-50 flex flex-col items-center justify-center gap-4 text-center">
-                <p className="text-gray-500 text-sm font-medium">Domizan, bir <span className="font-bold text-gray-700">ACRTECH</span> ürünüdür.</p>
-                <a href="https://acrtech.com.tr" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="/domizan-new/acrtech.png" alt="ACRTECH Logo" className="h-16 md:h-24 object-contain" />
+            <div className="mt-20 md:mt-32 border-t border-gray-200 py-12 bg-gray-50 flex items-center justify-center gap-2 text-center">
+                <span className="text-gray-500 text-sm font-medium">Domizan, bir</span>
+                <a href="https://acrtech.com.tr" target="_blank" rel="noopener noreferrer" className="inline-block opacity-80 hover:opacity-100 transition-opacity align-middle">
+                    <img src="/domizan-new/acrtech.png" alt="ACRTECH" className="h-6 mb-1 object-contain" />
                 </a>
+                <span className="text-gray-500 text-sm font-medium">ürünüdür.</span>
             </div>
         </div>
     );

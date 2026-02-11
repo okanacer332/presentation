@@ -38,9 +38,9 @@ function App() {
     return (
         <div className="w-full bg-slate-100 min-h-screen">
             {/* Slide Container - Full Viewport Height for Presentation Feel */}
-            <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 md:py-0 py-0">
+            <div className="relative w-full min-h-screen flex flex-col justify-center items-center bg-slate-50 md:py-0 py-0">
                 {/* Responsive Container: Fixed height on Desktop, Dynamic on Mobile */}
-                <div className="relative w-full max-w-[1280px] h-[100dvh] md:h-[720px] bg-white md:shadow-2xl shadow-none md:rounded-xl rounded-none overflow-hidden border-0 md:border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
+                <div className="relative w-full max-w-[1280px] min-h-[100dvh] md:min-h-0 md:h-[720px] bg-white md:shadow-2xl shadow-none md:rounded-xl rounded-none md:overflow-hidden border-0 md:border border-slate-200 z-10 mx-0 md:mx-4 flex flex-col">
 
                     {/* Top Progress Stepper - Optimized for Mobile */}
                     <div className="absolute top-4 md:top-6 left-0 w-full z-50 flex justify-center px-4">
@@ -76,7 +76,7 @@ function App() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="w-full h-full flex-1 relative overflow-y-auto overflow-x-hidden md:overflow-hidden touch-pan-y"
+                            className="w-full h-full flex-1 relative md:overflow-hidden touch-pan-y"
                         >
                             <CurrentComponent />
                         </motion.div>
