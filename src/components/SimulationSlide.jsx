@@ -334,7 +334,7 @@ const SimulationSlide = ({ onComplete }) => {
                             <div className="h-16 bg-[#1e293b] flex items-center justify-between px-8 border-b border-gray-700 shrink-0">
                                 <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30"><Zap size={24} className="text-white" /></div>
-                                    <span className="text-white font-bold text-2xl tracking-wide">Domizan AI Müşavir</span>
+                                    <span className="text-white font-bold text-2xl tracking-wide">Domizan Mali Müşavirin AI Asistanı</span>
                                 </div>
                                 <div className="flex gap-2">
                                     <div className="w-4 h-4 rounded-full bg-red-500/20"></div>
@@ -486,7 +486,7 @@ const SimulationSlide = ({ onComplete }) => {
                                 <Zap size={22} className="text-white" fill="currentColor" />
                             </div>
                             <div className="flex-1">
-                                <div className="text-white font-bold text-base">Domizan Asistan</div>
+                                <div className="text-white font-bold text-base">Domizan Mali Müşavirin AI Asistanı</div>
                                 <div className="text-blue-400 text-xs">bot</div>
                             </div>
                             <span className="text-gray-500 text-xs text-nowrap">Şimdi</span>
@@ -545,7 +545,7 @@ const SimulationSlide = ({ onComplete }) => {
                                         <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">DA</div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex justify-between items-baseline">
-                                                <span className="text-white font-bold truncate">Domizan Asistan</span>
+                                                <span className="text-white font-bold truncate">Domizan Mali Müşavirin AI Asistanı</span>
                                                 <span className="text-xs text-gray-400">09:05</span>
                                             </div>
                                             <div className="text-[#aebecd] text-sm truncate">
@@ -571,7 +571,7 @@ const SimulationSlide = ({ onComplete }) => {
                                 {/* Header */}
                                 <div className="h-14 bg-[#17212b] flex items-center px-6 justify-between shrink-0 border-b border-[#0e1621]">
                                     <div className="flex flex-col">
-                                        <span className="text-white font-bold">Domizan Asistan</span>
+                                        <span className="text-white font-bold">Domizan Mali Müşavirin AI Asistanı</span>
                                         <span className="text-[#6c7883] text-sm">bot</span>
                                     </div>
                                     <Search className="text-[#6c7883]" size={20} />
@@ -587,7 +587,7 @@ const SimulationSlide = ({ onComplete }) => {
                                     >
                                         <div className="w-10 h-10 bg-blue-500 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold">DA</div>
                                         <div className="bg-[#182533] p-4 rounded-xl rounded-tl-none border border-[#0e1621] shadow-sm">
-                                            <div className="text-[#64b5ef] font-bold text-sm mb-1">Domizan Asistan</div>
+                                            <div className="text-[#64b5ef] font-bold text-sm mb-1">Domizan Mali Müşavirin AI Asistanı</div>
                                             <div className="text-white text-sm leading-relaxed">
                                                 Günaydın Ahmet Bey! ☀️ <br />
                                                 Bugün Resmi Gazete'de inşaat sektörünü ilgilendiren <span className="text-yellow-400 font-bold">7346 Sayılı KDV Genel Tebliği</span> yayınlandı.
@@ -629,7 +629,7 @@ const SimulationSlide = ({ onComplete }) => {
                                             >
                                                 <div className="w-10 h-10 bg-blue-500 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold">DA</div>
                                                 <div className="bg-[#182533] p-4 rounded-xl rounded-tl-none border border-[#0e1621] shadow-sm">
-                                                    <div className="text-[#64b5ef] font-bold text-sm mb-1">Domizan Asistan</div>
+                                                    <div className="text-[#64b5ef] font-bold text-sm mb-1">Domizan Mali Müşavirin AI Asistanı</div>
                                                     <div className="text-white text-sm leading-relaxed">
                                                         Sisteme yüklenen son faturalara göre Şubat ayı tahmini raporunuz:
                                                         <ul className="list-disc list-inside mt-2 space-y-1 text-gray-300">

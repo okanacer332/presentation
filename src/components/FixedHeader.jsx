@@ -34,7 +34,7 @@ const FixedHeader = ({ currentSlide, setCurrentSlide }) => {
             {/* Center Logo - ABSOLUTE CENTER */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 cursor-pointer" onClick={() => setCurrentSlide(0)}>
                 <img src="/domizan-new/domizan.png" alt="Domizan" className="h-8 md:h-10 object-contain" />
-                <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden md:inline-block">AI Müşavir</span>
+                <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden md:inline-block">Mali Müşavirin AI Asistanı</span>
             </div>
 
             {/* Right Side / Navigation */}

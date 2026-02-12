@@ -10,7 +10,7 @@ const StandardHeader = ({ currentSlide, setCurrentSlide }) => {
                 {/* Logo Section */}
                 <div className="flex items-center gap-2 self-start md:self-auto py-1">
                     <img src="/domizan-new/domizan.png" alt="Domizan" className="h-6 md:h-8 object-contain" />
-                    <span className="font-bold text-gray-900 text-sm md:text-base tracking-tight hidden md:inline-block">AI Müşavir</span>
+                    <span className="font-bold text-gray-900 text-sm md:text-base tracking-tight hidden md:inline-block">Mali Müşavirin AI Asistanı</span>
                 </div>
 
                 {/* Stepper Navigation - Moved here essentially */}
