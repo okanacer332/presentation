@@ -5,14 +5,16 @@ import HeroSlide from './components/HeroSlide';
 import ProblemSlide from './components/ProblemSlide';
 import SolutionSlide from './components/SolutionSlide';
 import TelegramDemoSlide from './components/TelegramDemoSlide';
-import SimulationSlide from './components/SimulationSlide';
 import ContentSection from './components/ContentSection';
 import FitToViewport from './components/FitToViewport';
 import FixedHeader from './components/FixedHeader';
 
+// Main App Component - Ver 2.0
+// SimSlide Removed. 
 function App() {
+    console.log("App Mounting...");
     const [currentSlide, setCurrentSlide] = useState(0);
-    const slides = [SimulationSlide, HeroSlide, ProblemSlide, SolutionSlide, TelegramDemoSlide];
+    const slides = [HeroSlide, ProblemSlide, SolutionSlide, TelegramDemoSlide];
 
     const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -30,10 +32,7 @@ function App() {
 
     // Auto-Play Logic
     useEffect(() => {
-        // SimulationSlide manages its own timing and calls onComplete
-        if (CurrentComponent === SimulationSlide) return;
-
-        // For other slides, wait 15 seconds then advance
+        // For all slides, wait 15 seconds then advance
         const timer = setTimeout(() => {
             nextSlide();
         }, 15000);
@@ -65,13 +64,9 @@ function App() {
                             transition={{ duration: 0.3 }}
                             className="w-full h-full flex-1 relative overflow-hidden touch-pan-y"
                         >
-                            {currentSlide === 0 ? (
+                            <FitToViewport>
                                 <CurrentComponent onComplete={nextSlide} />
-                            ) : (
-                                <FitToViewport>
-                                    <CurrentComponent onComplete={nextSlide} />
-                                </FitToViewport>
-                            )}
+                            </FitToViewport>
                         </motion.div>
                     </AnimatePresence>
 

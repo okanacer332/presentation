@@ -32,7 +32,7 @@ const FixedHeader = ({ currentSlide, setCurrentSlide }) => {
             </div>
 
             {/* Center Logo - ABSOLUTE CENTER */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 cursor-pointer" onClick={() => setCurrentSlide(1)}>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 cursor-pointer" onClick={() => setCurrentSlide(0)}>
                 <img src="/domizan-new/domizan.png" alt="Domizan" className="h-8 md:h-10 object-contain" />
                 <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden md:inline-block">AI Müşavir</span>
             </div>
@@ -42,11 +42,10 @@ const FixedHeader = ({ currentSlide, setCurrentSlide }) => {
                 {/* Desktop Stepper */}
                 <div className="hidden md:flex items-center gap-1 bg-gray-50 p-1 rounded-xl border border-gray-100">
                     {[
-                        { id: 0, label: 'Simülasyon', icon: <Zap size={14} /> },
-                        { id: 1, label: 'Vizyon', icon: <Eye size={14} /> },
-                        { id: 2, label: 'Sorun', icon: <Shield size={14} /> },
-                        { id: 3, label: 'Çözüm', icon: <CheckCircle2 size={14} /> },
-                        { id: 4, label: 'Demo', icon: <MessageCircle size={14} /> },
+                        { id: 0, label: 'Vizyon', icon: <Eye size={14} /> },
+                        { id: 1, label: 'Sorun', icon: <Shield size={14} /> },
+                        { id: 2, label: 'Çözüm', icon: <CheckCircle2 size={14} /> },
+                        { id: 3, label: 'Demo', icon: <MessageCircle size={14} /> },
                     ].map((item, index) => (
                         <button
                             key={index}
